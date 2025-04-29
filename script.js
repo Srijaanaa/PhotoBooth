@@ -1,4 +1,3 @@
-/* JS for the photo booth application */
 // Get elements
 const video = document.getElementById('video');
 const videoCanvas = document.getElementById('videoCanvas');
@@ -154,9 +153,11 @@ function applyBlur(context, width, height, offsetY = 0) {
 // Apply horizontal flip
 function applyFlip(context, width, height, offsetY = 0, sourceCanvas = video) {
   context.save();
-  context.translate(width, offsetY);
+  // Only flip horizontally, don't translate on y-axis
+  context.translate(width, 0);
   context.scale(-1, 1);
-  context.drawImage(sourceCanvas, 0, offsetY, width, height, 0, 0, width, height);
+  // Draw the image at the correct y-offset
+  context.drawImage(sourceCanvas, 0, 0, width, height, 0, offsetY, width, height);
   context.restore();
 }
 
@@ -184,10 +185,11 @@ function applyTripleBorder(context, width, height, singleHeight) {
   // Draw each photo with gaps
   for (let i = 0; i < 3; i++) {
     const yOffset = i * (singleHeight + gap);
+    console.log(`Drawing photo ${i + 1} from captureCanvas at source yOffset ${yOffset} to tempCanvas at y ${borderWidth + yOffset}`);
     context.drawImage(
       captureCanvas,
-      0, yOffset, width, singleHeight,
-      borderWidth, borderWidth + yOffset, width, singleHeight
+      0, yOffset, width, singleHeight, // Source rectangle
+      borderWidth, borderWidth + yOffset, width, singleHeight // Destination rectangle
     );
   }
 
