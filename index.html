@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photobooth App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
+  <div class="main-container">
+    
+    <!-- Camera Preview Section -->
+    <div class="camera-section bg-blue-50 rounded-lg shadow-lg border-2 border-blue-200 p-6 flex-1">
+      <h1 class="text-2xl font-bold text-center mb-4 text-blue-700">Photobooth Camera</h1>
+      
+      <!-- Video feed with countdown overlay -->
+      <div class="video-container rounded">
+        <video id="video" autoplay class="rounded hidden"></video>
+        <canvas id="videoCanvas" class="rounded"></canvas>
+        <div id="countdown"></div>
+      </div>
+      
+      <!-- Controls -->
+      <div class="flex flex-col gap-4 mt-4">
+        <!-- Capture mode selection -->
+        <select id="captureMode" class="border p-2 rounded">
+          <option value="single">Single Photo</option>
+          <option value="triple">Three Photos</option>
+        </select>
+        
+        <!-- Filter selection -->
+        <select id="filter" class="border p-2 rounded">
+          <option value="none">No Filter</option>
+          <option value="grayscale">Grayscale</option>
+          <option value="sepia">Sepia</option>
+          <option value="bright">Bright</option>
+          <option value="dark">Dark</option>
+          <option value="contrast">High Contrast</option>
+          <option value="blur">Blur</option>
+        </select>
+        
+        <!-- Flip toggle -->
+        <div class="flex items-center gap-2">
+          <label class="switch">
+            <input type="checkbox" id="flipToggle">
+            <span class="slider"></span>
+          </label>
+          <span class="text-sm font-medium">Flip Photo</span>
+        </div>
+        
+        <!-- Capture button -->
+        <button id="capture" class="bg-[rgb(219,141,141)] hover:bg-[rgb(229,161,161)] text-white px-6 py-3 rounded font-semibold">Capture Photo(s)</button>
+      </div>
+    </div>
+    
+    <!-- Captured Photo Section -->
+    <div class="photo-section bg-pink-50 rounded-lg shadow-lg border-2 border-pink-200 p-6 flex-1">
+      <h1 class="text-2xl font-bold text-center mb-4 text-pink-700">Captured Photo</h1>
+      <img id="photo" class="rounded hidden w-full h-auto" alt="Captured Photo">
+      <!-- Download button -->
+      <a id="download" href="#" class="bg-[rgb(37,74,86)] hover:bg-[rgb(47,94,106)] text-white px-6 py-3 rounded font-semibold text-center hidden mt-4 block">Download Photo</a>
+    </div>
+    
+    <!-- Canvas for capturing and filtering -->
+    <canvas id="captureCanvas" class="hidden"></canvas>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
