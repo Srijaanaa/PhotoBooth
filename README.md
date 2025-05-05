@@ -90,25 +90,3 @@ This project is open-source and available under the MIT License.
 
 
 ---
-
-### How to Use the README
-1. **Save the README**:
-   - Copy the content from the artifact above and save it as `README.md` in the same directory as `index.html`, `style.css`, and `script.js`.
-
-2. **Add to GitHub Repository**:
-   - If you’re using GitHub (e.g., `srijana-lohani/srijana-lohani-photobooth`):
-     - Go to your repository on GitHub.
-     - Click “Add file” > “Upload files.”
-     - Upload `README.md` and commit the changes.
-   - GitHub will render the Markdown as the repository’s main page.
-
-3. **Local Use**:
-   - Open `README.md` in a Markdown viewer (e.g., VS Code with a Markdown extension) to read the formatted instructions.
-
----
-
-### Why This README?
-- **Project-Specific**: Tailored to the JavaScript photobooth app, including details about GitHub Pages deployment and browser-specific issues.
-- **User-Friendly**: Provides clear steps for installation, usage, and troubleshooting, suitable for beginners and developers.
-- **Comprehensive**: Covers all key aspects, including limitations and contribution guidelines.
-
